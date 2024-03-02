@@ -15,6 +15,13 @@ dotnet sln add .\src\Application\Application.csproj
 dotnet add .\src\Application\Application.csproj reference .\src\Models\Models.csproj
 dotnet add .\src\Web\Web.csproj reference .\src\Application\Application.csproj
 
+# Creating persistence project
+dotnet new classlib -n TestPersistence -o .\src\TestPersistence
+dotnet sln add .\src\TestPersistence\TestPersistence.csproj
+dotnet add .\src\TestPersistence\TestPersistence.csproj reference .\src\Models\Models.csproj
+dotnet add .\src\TestPersistence\TestPersistence.csproj reference .\src\Application\Application.csproj
+dotnet add .\src\Web\Web.csproj reference .\src\TestPersistence\TestPersistence.csproj
+
 # Creating test projects
 dotnet new xunit -o .\tests\UnitTests
 dotnet sln add .\tests\UnitTests\UnitTests.csproj
