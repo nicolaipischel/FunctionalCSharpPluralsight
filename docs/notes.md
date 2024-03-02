@@ -122,3 +122,36 @@ C# does not have built in support for partial application.}
 * Use delegates if you need to manipulate *<b>functions</b>*
 * Use extension and static methods to only manipulate *<b>objects</b>*
 
+### Discriminated Unions
+
+*<b>The only constant in software is change</b>*
+
+In object oriented programming we would use *Polymorphism* to handle type changes.
+* By creating a virtual method on the base class
+* And overriding it in the derrived classes.
+  * Subclasses inherit *<b>behavior</b>*
+  * State on the base class is *<b>encapsulated</b>*
+* Overrides may depend on object's state
+
+In functional programming a function in an object
+* All variants must have the same signature
+* Virtual methods not applicable in functional design
+* Type and Pattern matching (Type test and set operator) are used to handle type variation
+* Functional style types are defined as a composition of other types
+  * Public components
+  * Accessed by *<b>functions</b>*
+
+*<b>Warning!</b>*
+There is no modifier in C# to specify that there will be no <b>other</b> inheritors.
+
+Switch Expressions (C# 8)
+* Each branch is an expression
+* Each branch is *<b>evaluated</b>* rather than executed.
+* Entire switch expression becomes an <b>expression</b>
+* Use switch expression in expression-bodies methods
+* Assign switch expression to a variable
+
+<b>General advice:</b>
+Separate technical code from domain-specific code
+* Give *ugly* code a name that tells what it does
+Use the most strict type possible on the model

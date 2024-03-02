@@ -36,3 +36,9 @@ Technical Requirement:
 * Parameterize barcode printing:
   * Bar thicknesses, gaps, antialiasing
   * Image height, margins
+
+Example for Type problem:
+* Part: Name="BC547", SKU="ELTRBC547"
+  * There is no such thing as dividing a part into two 
+* Material: Name="Soldering alloy ingot", SKU="SLD10"
+  * Dividing a material results in portions that retain the qualities of the original material.
