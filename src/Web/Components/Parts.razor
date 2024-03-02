@@ -1,6 +1,7 @@
 @using Models.Types
 @using Models.Media;
 <table class="table table-striped">
+    <thead>
     @{ int ordinal = 0;}
     <tr>
         <th>#</th>
@@ -8,15 +9,18 @@
         <th>SKU</th>
         <th>Barcode</th>
     </tr>
+    </thead>
+    <tbody>
     @foreach (Part part in AllParts.OrderBy(part => part.Name))
     {
         <tr>
-            <th>@(++ordinal)</th>
-            <th>@part.Name</th>
-            <th>@part.Sku.Value</th>
-            <th><img src="data:@part.Sku.ToCode39(25).EncodeBase64().Content" /></th>
+            <td>@(++ordinal)</td>
+            <td>@part.Name</td>
+            <td>@part.Sku.Value</td>
+            <td><img src="data:@part.Sku.ToCode39(25).EncodeBase64().Content"/></td>
         </tr>
     }
+    </tbody>
 </table>
 
 @code {
