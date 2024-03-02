@@ -1,5 +1,7 @@
 ﻿@page
 @using Web.Components
+@using Models.Media
+@using Models.Types
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -7,5 +9,29 @@
 
 <div class="text-left">
     @* <component type="typeof(BusinessMonths)" render-mode="Static" param-fortimestamp="@DateTime.UtcNow" /> *@
-    <component type="typeof(Parts)" render-mode="Static" param-allparts="@Model.AllParts" />
+    @* <component type="typeof(Parts)" render-mode="Static" param-allparts="@Model.AllParts" /> *@
+    
+    <table class="table table-striped">
+        <thead>
+        @{ int ordinal = 0;}
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>SKU</th>
+            <th>Barcode</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Part part in Model.AllParts.OrderBy(part => part.Name))
+        {
+            <tr>
+                <td>@(++ordinal)</td>
+                <td>@part.Name</td>
+                <td>@part.Sku.Value</td>
+                <td><img src="data:@part.Sku.ToCode39(Model.Margins, Model.Style).EncodeBase64().Content"/></td>
+                <td><a asp-page="partdetails" asp-route-id="@part.Id">Details</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>

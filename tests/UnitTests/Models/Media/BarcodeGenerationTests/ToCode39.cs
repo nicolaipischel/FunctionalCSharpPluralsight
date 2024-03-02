@@ -12,7 +12,9 @@ public sealed class ToCode39
         var sku = new StockKeepingUnit("BT9V");
         var barHeightInPixel = 25;
 
-        var actual = sku.ToCode39(barHeightInPixel);
+        var margins = new BarcodeGeneration.Margins(0.5f, 0.2f, 25);
+        var style = new BarcodeGeneration.Style(1.5f, 2.5f, 2.0f, 2.0f, true);
+        var actual = sku.ToCode39(margins, style);
         
         // We cannot really verify the internal structure of the byte array..
         // That is why this is the probably the only way to verify the function is working as expected.

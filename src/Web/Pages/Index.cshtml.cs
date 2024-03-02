@@ -1,5 +1,6 @@
 using Application;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models.Media;
 using Models.Types;
 
 namespace Web.Pages;
@@ -17,8 +18,15 @@ public class IndexModel : PageModel
 
     public IEnumerable<Part> AllParts { get; set; } = Enumerable.Empty<Part>();
 
+    public BarcodeGeneration.Margins Margins { get; } = new(
+        Horizontal: 5, Vertical: 3, BarHeightInPixel: 25);
+
+    public BarcodeGeneration.Style Style { get; } = new(
+        ThinBarWidth: 1.5f, ThickBarWidth: 4, GapWidth: 2, Padding: 2, IsAntialiasingEnabled: true);
+
     public void OnGet()
     {
         this.AllParts = _parts.GetAll().ToList();
+        
     }
 }

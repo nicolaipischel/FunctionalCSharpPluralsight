@@ -32,3 +32,7 @@ Technical Requirement:
 * Support visual style parameters
 * Make no observable side effects
 ![img_1.png](img_1.png)
+
+* Parameterize barcode printing:
+  * Bar thicknesses, gaps, antialiasing
+  * Image height, margins
