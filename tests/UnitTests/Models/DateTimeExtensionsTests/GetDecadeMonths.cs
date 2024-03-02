@@ -1,11 +1,12 @@
 using System.Globalization;
 using Models;
 
-namespace UnitTests.Models.DateTimeExtensions;
+namespace UnitTests.Models.DateTimeExtensionsTests;
 
 public sealed class GetDecadeMonths
 {
     [Fact]
+    
     public void Returns_YearAndMonths_ForADecade_Given_DateTime()
     {   
         var dateTime = new DateTime(2024, 03, 02, calendar: new GregorianCalendar());
