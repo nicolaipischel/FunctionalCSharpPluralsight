@@ -49,3 +49,29 @@ Hint: Closure cannot capture a value type from *this*
   * Using Call Chaining
 * *<b>Feel free to define primitives on the class to which they apply</b>.*
 * *<b>Move specialized transforms to a dedicated extension class</b>*
+
+### Principles of Functional Modeling
+* Separate types from functions
+  * There are types to describe elements of the business
+  * There are functions to describe business processes
+
+* The number of types is bounded in any business domain
+  * Adding more types to the model at first
+  * No more types to add beyond a certain point.
+
+* Modeling included defining functiongs to model behaviour
+  * Functions apply to instances of types, returning instances of types
+  * There will always be new behaviour to add to the system
+
+#### Object-oriented vs. Functional Modeling
+
+Object Oriented:
+* It is hard to add a new method to a hierarchy of classes
+* Working actively to keep the design maintainable -> Requires knowledge
+
+Functional:
+* It is easy to add a new function to existing functions.
+* Forced to separate concepts by design
+
+Modern OOP:
+* Favors object composition over inheritance
