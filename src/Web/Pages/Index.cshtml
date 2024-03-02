@@ -1,5 +1,4 @@
 ﻿@page
-@using Web.Components
 @using Models.Media
 @using Models.Types
 @model IndexModel
@@ -26,7 +25,7 @@
         {
             // Partial application in its most expressive form im C#
             // var image = BarcodeGeneration.ToCode39(Model.Margins, Model.Style)(part.Sku);
-            var toCode39 = BarcodeGeneration.ToCode39(Model.Margins, Model.Style);
+            var toCode39 = Code39Generator.ToCode39.Apply(Model.Margins, Model.Style);
             <tr>
                 <td>@(++ordinal)</td>
                 <td>@part.Name</td>

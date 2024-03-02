@@ -1,29 +1,26 @@
 ﻿using Models.Common;
-using Models.Types;
+using Models.Functions.Media.Types;
 using SkiaSharp;
 
 namespace Models.Media;
 
-public static class BarcodeGeneration
+public static class Code39Generator
 {
-    public record Margins(float Horizontal, float Vertical, float BarHeightInPixel);
-    public record Style(float ThinBarWidth, float ThickBarWidth, float GapWidth, float Padding, bool IsAntialiasingEnabled);
-
-    public static Func<StockKeepingUnit, FileContent> ToCode39(Margins margins, Style style) =>
-        sku => ToCode39(margins, style, sku);
+    // Is obsolete because of the Apply Extension on the delegate type but I still want to keep it as a reference.
+    // public static BarcodeGenerator ToCode39(Margins margins, Style style) =>
+    //     sku => ToCode39Internal(margins, style, sku);
     
     // https://en:wikipedia.org/wiki/Code_39
     // Take SKU string, convert to Code39 bars, draw to bitmap, encode to png
-    public static FileContent ToCode39(
-        Margins margins, Style style, StockKeepingUnit sku) =>
+    public static BarcodeGeneratorExtended ToCode39 => (margins, style, sku) =>
         sku.Value.ToCode39Bars().ToCode39Bitmap(margins, style).ToPng();
 
     // Take bar widths, convert to graphical lines, draw on the bitmap
-    private static SKBitmap ToCode39Bitmap(this IEnumerable<int> bars, Margins margins, Style style) =>
+    private static SKBitmap ToCode39Bitmap(this IEnumerable<int> bars, BarcodeMargins margins, Code39Style style) =>
         bars.ToGraphicalLines(style).ToBarcodeBitmap(margins, style);
 
     // Take bar widths, convert them to corresponding graphical lines
-    private static SKPaint[] ToGraphicalLines(this IEnumerable<int> bars, Style style) =>
+    private static SKPaint[] ToGraphicalLines(this IEnumerable<int> bars, Code39Style style) =>
         bars.ToGraphicalLines(Gap(style), ThinBar(style), ThickBar(style));
 
     // * Bridges the gap between bar widths and actual lines with those widths. *
@@ -32,9 +29,9 @@ public static class BarcodeGeneration
         bars.Select(bar => lines[bar]).ToArray();
 
     // Specify thick, thin bar and a gap according to requirements.
-    private static SKPaint ThickBar(Style style) => Bar(SKColors.Black, style.ThickBarWidth, style.IsAntialiasingEnabled);
-    private static SKPaint ThinBar(Style style) => Bar(SKColors.Black, style.ThinBarWidth, style.IsAntialiasingEnabled);
-    private static SKPaint Gap(Style style) => Bar(SKColors.Transparent, style.GapWidth, style.IsAntialiasingEnabled);
+    private static SKPaint ThickBar(Code39Style style) => Bar(SKColors.Black, style.ThickBarWidth, style.IsAntialiasingEnabled);
+    private static SKPaint ThinBar(Code39Style style) => Bar(SKColors.Black, style.ThinBarWidth, style.IsAntialiasingEnabled);
+    private static SKPaint Gap(Code39Style style) => Bar(SKColors.Transparent, style.GapWidth, style.IsAntialiasingEnabled);
     
     private static SKPaint Bar(SKColor color, float thickness, bool antialias) => new()
     {
@@ -45,7 +42,7 @@ public static class BarcodeGeneration
         IsAntialias = antialias
     };
 
-    private static SKBitmap ToBarcodeBitmap(this SKPaint[] bars, Margins margins, Style style)
+    private static SKBitmap ToBarcodeBitmap(this SKPaint[] bars, BarcodeMargins margins, Code39Style style)
     {
         float horizontalMargin = margins.Horizontal;
         float barHeight = margins.BarHeightInPixel;

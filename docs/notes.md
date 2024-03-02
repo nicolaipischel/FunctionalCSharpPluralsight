@@ -109,5 +109,16 @@ Shell:
 Functional Code should not mix <b>substatial data</b> with <b>ephemeral data</b>
 * Configuration is the duty of the composition root *NOT* the function.
 * * The argument that is most likely to change comes last.
+* We can inject a Func/Action delegate like a dependency into any class.
+  * Delegate is an object, like any other (it may include captured variables (the closure))
+  * Call the delegate's <b>Invoke</b> method to execute it or use shorthand syntax for the call (using just parentheses)
+  * Downsides:
+    * Func delegate arguments have no names, but only types
+      * Argument types can help avoid mistakes (if you made a good type system in the first place)
+    * Its possible to inject *any* function with that signature
 
-*C# does not have built in support for partial application.}
+C# does not have built in support for partial application.}
+
+* Use delegates if you need to manipulate *<b>functions</b>*
+* Use extension and static methods to only manipulate *<b>objects</b>*
+

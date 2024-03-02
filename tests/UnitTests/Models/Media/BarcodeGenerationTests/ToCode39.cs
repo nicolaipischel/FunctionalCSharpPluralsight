@@ -1,4 +1,5 @@
 using System.Text;
+using Models.Functions.Media.Types;
 using Models.Media;
 using Models.Types;
 
@@ -12,9 +13,9 @@ public sealed class ToCode39
         var sku = new StockKeepingUnit("BT9V");
         var barHeightInPixel = 25;
 
-        var margins = new BarcodeGeneration.Margins(0.5f, 0.2f, 25);
-        var style = new BarcodeGeneration.Style(1.5f, 2.5f, 2.0f, 2.0f, true);
-        var toCode39 = BarcodeGeneration.ToCode39(margins, style);
+        var margins = new BarcodeMargins(0.5f, 0.2f, 25);
+        var style = new Code39Style(1.5f, 2.5f, 2.0f, 2.0f, true);
+        var toCode39 = Code39Generator.ToCode39.Apply(margins, style);
         var actual = toCode39(sku);
         
         // We cannot really verify the internal structure of the byte array..

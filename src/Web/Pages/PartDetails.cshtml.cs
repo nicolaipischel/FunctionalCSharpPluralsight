@@ -1,5 +1,6 @@
 using Application;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models.Functions.Media.Types;
 using Models.Media;
 using Models.Types;
 
@@ -21,14 +22,26 @@ public class PartDetailsModel : PageModel
     {
         this.Part = _parts.Find(id);
         this.BarcodeImage = this.GenerateBarcode(this.Part.Sku);
+
+        var skus = Enumerable.Empty<StockKeepingUnit>();
+        var f = Code39Generator.ToCode39.Apply(this.Margins, this.Style);
+        
+        // We need to pass the Invoke of the delegate because
+        // a strongly typed delegate do not derive from Action/Func delegates. 
+        var barcodes = skus.Select(f.Invoke);
+
+        // We must rely on lamdas because its safe to assign a lamda to a Func delegate
+        // and we cannot assign strongly typed delegates to Func/Action or the other way around directly.
+        Func<StockKeepingUnit, FileContent> func = x => f(x);
+        BarcodeGenerator g = x => func(x);
     }
 
-    private Func<StockKeepingUnit, FileContent> GenerateBarcode =>
-        BarcodeGeneration.ToCode39(this.Margins, this.Style);
+    private BarcodeGenerator GenerateBarcode =>
+        Code39Generator.ToCode39.Apply(this.Margins, this.Style);
 
-    private BarcodeGeneration.Margins Margins => new(
+    private BarcodeMargins Margins => new(
         Horizontal: 20, Vertical: 10, BarHeightInPixel: 200);
 
-    private BarcodeGeneration.Style Style => new(
+    private Code39Style Style => new(
         ThinBarWidth: 4, ThickBarWidth: 10, GapWidth: 4, Padding: 4, IsAntialiasingEnabled: false);
 }
