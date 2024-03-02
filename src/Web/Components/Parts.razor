@@ -1,0 +1,21 @@
+@using Models.Types
+<table class="table table-striped">
+    @{ int ordinal = 0;}
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>SKU</th>
+    </tr>
+    @foreach (Part part in AllParts.OrderBy(part => part.Name))
+    {
+        <tr>
+            <th>@(++ordinal)</th>
+            <th>@part.Name</th>
+            <th>@part.Sku.Value</th>
+        </tr>
+    }
+</table>
+
+@code {
+    [Parameter] public IEnumerable<Part> AllParts { get; set; }
+}

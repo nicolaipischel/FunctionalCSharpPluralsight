@@ -1,10 +1,11 @@
 ﻿@page
-@using BusinessMonths = Components.BusinessMonths;
+@using Web.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <component type="typeof(BusinessMonths)" render-mode="Static" param-fortimestamp="@DateTime.UtcNow" />
+    @* <component type="typeof(BusinessMonths)" render-mode="Static" param-fortimestamp="@DateTime.UtcNow" /> *@
+    <component type="typeof(Parts)" render-mode="Static" param-allparts="@Model.AllParts" />
 </div>
