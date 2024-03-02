@@ -1,3 +1,3 @@
 namespace Models;
 
-public record struct Month(int Year, int Ordinal);
+public record struct Month(Year Year, int Ordinal);

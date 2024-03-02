@@ -11,18 +11,18 @@ public sealed class GetYearMonths
         var dateTime = new DateTime(2024, 03, 02, calendar: new GregorianCalendar());
         var expected = new[]
         {
-            new Month(2024, 1),
-            new Month(2024, 2),
-            new Month(2024, 3),
-            new Month(2024, 4),
-            new Month(2024, 5),
-            new Month(2024, 6),
-            new Month(2024, 7),
-            new Month(2024, 8),
-            new Month(2024, 9),
-            new Month(2024, 10),
-            new Month(2024, 11),
-            new Month(2024, 12)
+            new Month(new(2024), 1),
+            new Month(new(2024), 2),
+            new Month(new(2024), 3),
+            new Month(new(2024), 4),
+            new Month(new(2024), 5),
+            new Month(new(2024), 6),
+            new Month(new(2024), 7),
+            new Month(new(2024), 8),
+            new Month(new(2024), 9),
+            new Month(new(2024), 10),
+            new Month(new(2024), 11),
+            new Month(new(2024), 12)
         };
 
         var actual = dateTime.GetYearMonths();

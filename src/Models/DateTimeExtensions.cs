@@ -2,6 +2,7 @@
 
 public static class DateTimeExtensions
 {
+    public static Year ToYear(this DateTime dateTime) => new (dateTime.Year);
     public static IEnumerable<Month> GetYearMonths(this DateTime dateTime) =>
         dateTime.Year.GetYearMonths();
 
@@ -11,7 +12,7 @@ public static class DateTimeExtensions
     private static int ToDecadeBeginning(this int year) => year / 10 * 10 + 1;
 
     private static IEnumerable<Month> GetYearMonths(this int year) =>
-        Enumerable.Range(1, 12).Select(month => new Month(year, month));
+        Enumerable.Range(1, 12).Select(month => new Month(new(year), month));
 
 
 }
