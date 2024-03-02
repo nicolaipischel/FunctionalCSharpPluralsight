@@ -10,6 +10,9 @@
   * No observable side effects
   * Repeated call produces equal result
   * Supports referential transparency (no difference between calling a function one or multiple times) -> Idempotent
+  * Like a mathematical function (but computable)
+  * Must no access global properties (time, database, email etc.)
+  * Must not make any observable side effects.
 * Don't be afraid to define an empty method to buy yourself time for thinking.
 
 ### The Functional Designing Process
@@ -36,6 +39,15 @@ Hint: Closure cannot capture a value type from *this*
   * Method's location becomes less important
   * Move functions to types that it belongs to
 
+#### Functional Decomposition:
+* Decompose a problem into small ones -> Enables function composition
+* Address subproblems in isolation
+  * Easier then addressing the original problem
+  * Functions are applicable in other contexts -> Helps reuse code, reduces duplication
+
+Ask Yourself: *"Am I able to further decompose this function?"*
+* Theres a gap between the definition of inputs and the output
+* This function is a candidate for *<b>decomposition</b>*
 ### Using Objects in a Functional Design
 * Everything is an object in C#
   * Even a lambda is an object
@@ -87,3 +99,8 @@ Shell:
 * Networking
 * Persistence
 * Instantiates types from the core
+
+### Fighting Bloated Classes in Modern OOP
+* Define bare minimum of functions on class
+* Add some functions as extension methods
+* Use the class as a field in other classes -> Favor object composition over class inheritance
