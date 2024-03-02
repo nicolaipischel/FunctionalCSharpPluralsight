@@ -13,7 +13,8 @@ public delegate FileContent BarcodeGeneratorExtended(
 public static class BarcodeGenerationExtensions
 {
     // Bridges the gap between the full signature function and the partially applied one.
-    public static BarcodeGenerator Apply(this BarcodeGeneratorExtended f,
+    public static BarcodeGenerator Apply(
+        this BarcodeGeneratorExtended f,
         BarcodeMargins margins, Code39Style style) =>
         sku => f(margins, style, sku);
 }

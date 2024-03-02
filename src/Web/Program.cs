@@ -1,6 +1,7 @@
 using Application;
 using Models.Types;
 using TestPersistence;
+using Web.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IReadOnlyRepository<Part>, PartsReadRepository>();
+builder.Services.Configure<BarcodeFormatOptions>(builder.Configuration.GetSection(BarcodeFormatOptions.SectionKeyName));
+builder.Services.AddSingleton<BarcodeGeneratorFactory>();
 
 var app = builder.Build();
 

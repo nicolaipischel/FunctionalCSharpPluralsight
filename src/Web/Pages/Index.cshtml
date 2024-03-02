@@ -25,12 +25,13 @@
         {
             // Partial application in its most expressive form im C#
             // var image = BarcodeGeneration.ToCode39(Model.Margins, Model.Style)(part.Sku);
-            var toCode39 = Code39Generator.ToCode39.Apply(Model.Margins, Model.Style);
+            // Less expressive form using a variable with the Apply extension method.
+            // var toCode39 = Code39Generator.ToCode39.Apply(Model.Margins, Model.Style);
             <tr>
                 <td>@(++ordinal)</td>
                 <td>@part.Name</td>
                 <td>@part.Sku.Value</td>
-                <td><img src="data:@toCode39(part.Sku).EncodeBase64().Content"/></td>
+                <td><img src="data:@Model.BarcodeGenerator(part.Sku).EncodeBase64().Content"/></td>
                 <td><a asp-page="partdetails" asp-route-id="@part.Id">Details</a></td>
             </tr>
         }
