@@ -1,4 +1,4 @@
-namespace Models;
+namespace Models.Time;
 
 public record struct Year(int Number)
 {

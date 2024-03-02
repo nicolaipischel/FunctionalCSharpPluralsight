@@ -1,7 +1,7 @@
 using System.Globalization;
-using Models;
+using Models.Time;
 
-namespace UnitTests.Models.DateTimeExtensionsTests;
+namespace UnitTests.Models.Time.DateTimeExtensionsTests;
 
 public sealed class ToYear
 {

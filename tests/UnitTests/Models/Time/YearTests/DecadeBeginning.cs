@@ -1,6 +1,6 @@
-using Models;
+using Models.Time;
 
-namespace UnitTests.Models.YearTests;
+namespace UnitTests.Models.Time.YearTests;
 
 public sealed class DecadeBeginning
 {
