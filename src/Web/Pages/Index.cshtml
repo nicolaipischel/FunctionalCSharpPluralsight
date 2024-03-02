@@ -24,11 +24,14 @@
         <tbody>
         @foreach (Part part in Model.AllParts.OrderBy(part => part.Name))
         {
+            // Partial application in its most expressive form im C#
+            // var image = BarcodeGeneration.ToCode39(Model.Margins, Model.Style)(part.Sku);
+            var toCode39 = BarcodeGeneration.ToCode39(Model.Margins, Model.Style);
             <tr>
                 <td>@(++ordinal)</td>
                 <td>@part.Name</td>
                 <td>@part.Sku.Value</td>
-                <td><img src="data:@part.Sku.ToCode39(Model.Margins, Model.Style).EncodeBase64().Content"/></td>
+                <td><img src="data:@toCode39(part.Sku).EncodeBase64().Content"/></td>
                 <td><a asp-page="partdetails" asp-route-id="@part.Id">Details</a></td>
             </tr>
         }

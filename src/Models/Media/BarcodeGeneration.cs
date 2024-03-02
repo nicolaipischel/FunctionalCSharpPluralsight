@@ -7,11 +7,15 @@ namespace Models.Media;
 public static class BarcodeGeneration
 {
     public record Margins(float Horizontal, float Vertical, float BarHeightInPixel);
-
     public record Style(float ThinBarWidth, float ThickBarWidth, float GapWidth, float Padding, bool IsAntialiasingEnabled);
+
+    public static Func<StockKeepingUnit, FileContent> ToCode39(Margins margins, Style style) =>
+        sku => ToCode39(margins, style, sku);
+    
     // https://en:wikipedia.org/wiki/Code_39
     // Take SKU string, convert to Code39 bars, draw to bitmap, encode to png
-    public static FileContent ToCode39(this StockKeepingUnit sku, Margins margins, Style style) =>
+    public static FileContent ToCode39(
+        Margins margins, Style style, StockKeepingUnit sku) =>
         sku.Value.ToCode39Bars().ToCode39Bitmap(margins, style).ToPng();
 
     // Take bar widths, convert to graphical lines, draw on the bitmap

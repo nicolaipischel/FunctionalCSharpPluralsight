@@ -20,8 +20,11 @@ public class PartDetailsModel : PageModel
     public void OnGet(Guid id)
     {
         this.Part = _parts.Find(id);
-        this.BarcodeImage = this.Part.Sku.ToCode39(this.Margins, this.Style);
+        this.BarcodeImage = this.GenerateBarcode(this.Part.Sku);
     }
+
+    private Func<StockKeepingUnit, FileContent> GenerateBarcode =>
+        BarcodeGeneration.ToCode39(this.Margins, this.Style);
 
     private BarcodeGeneration.Margins Margins => new(
         Horizontal: 20, Vertical: 10, BarHeightInPixel: 200);

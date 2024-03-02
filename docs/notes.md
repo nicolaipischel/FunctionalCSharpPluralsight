@@ -104,3 +104,10 @@ Shell:
 * Define bare minimum of functions on class
 * Add some functions as extension methods
 * Use the class as a field in other classes -> Favor object composition over class inheritance
+
+### Partial Functional Application
+Functional Code should not mix <b>substatial data</b> with <b>ephemeral data</b>
+* Configuration is the duty of the composition root *NOT* the function.
+* * The argument that is most likely to change comes last.
+
+*C# does not have built in support for partial application.}
