@@ -8,6 +8,7 @@ dotnet sln add .\src\Web\Web.csproj
 dotnet new classlib -n Models -o .\src\Models
 dotnet sln add .\src\Models\Models.csproj
 dotnet add .\src\Web\Web.csproj reference .\src\Models\Models.csproj
+dotnet add .\src\Models\Models.csproj package SkiaSharp
 
 # Creating application project
 dotnet new classlib -n Application -o .\src\Application

@@ -26,3 +26,9 @@ Possible Future Areas of the System
 * Transport: ...
 * Planning: ...
 * Units: ...
+
+Technical Requirement:
+* Draw a barcode from the SKU
+* Support visual style parameters
+* Make no observable side effects
+![img_1.png](img_1.png)
