@@ -47,7 +47,7 @@ public static class Code39Generator
         float horizontalMargin = margins.Horizontal;
         float barHeight = margins.BarHeightInPixel;
         float verticalMargin = margins.Vertical;
-        float padding = 2.0f;
+        float padding = style.Padding;
         float barsWidth = bars.Sum(bar => bar.StrokeWidth);
         float height = barHeight + 2 * verticalMargin;
         float width = barsWidth + (bars.Length - 1) * padding + 2 * horizontalMargin;
