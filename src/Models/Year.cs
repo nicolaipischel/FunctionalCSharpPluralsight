@@ -2,6 +2,14 @@ namespace Models;
 
 public record struct Year(int Number)
 {
+    private const int MinMonth = 1;
+    private const int MaxMonth = 12;
+    
+    public IEnumerable<Month> TryGetMonth(int ordinal)
+    {
+        if (ordinal is >= MinMonth and <= MaxMonth) yield return new Month(this, ordinal);
+    }
+    
     public IEnumerable<Month> Months =>
         this.GetMonths(this);
     
