@@ -16,3 +16,13 @@ The external SKU must never be printed as Barcode.
 Store a photo scan of the external barcode/QR code.
 
 ![img.png](img.png)
+
+Possible Future Areas of the System
+
+* Materials: Parts, materials, elements...
+* Warehouse: Stockkeeping of parts, materials..
+* Assembly: Specifications, blueprints, assembly instructions..
+* Finance: Tracking money, costs, procurement
+* Transport: ...
+* Planning: ...
+* Units: ...
