@@ -75,3 +75,15 @@ Functional:
 
 Modern OOP:
 * Favors object composition over inheritance
+
+#### Functional Core - Imperative Shell
+
+Core:
+* Immutable types
+* Pure functions
+* Applies functions to the shell
+
+Shell:
+* Networking
+* Persistence
+* Instantiates types from the core
