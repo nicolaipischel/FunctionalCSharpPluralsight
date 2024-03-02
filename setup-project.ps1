@@ -9,9 +9,17 @@ dotnet new classlib -n Models -o .\src\Models
 dotnet sln add .\src\Models\Models.csproj
 dotnet add .\src\Web\Web.csproj reference .\src\Models\Models.csproj
 
+# Creating application project
+dotnet new classlib -n Application -o .\src\Application
+dotnet sln add .\src\Application\Application.csproj
+dotnet add .\src\Application\Application.csproj reference .\src\Models\Models.csproj
+dotnet add .\src\Web\Web.csproj reference .\src\Application\Application.csproj
+
 # Creating test projects
 dotnet new xunit -o .\tests\UnitTests
 dotnet sln add .\tests\UnitTests\UnitTests.csproj
+dotnet add .\tests\UnitTests\UnitTests.csproj reference .\src\Models\Models.csproj
+dotnet add .\tests\UnitTests\UnitTests.csproj reference .\src\Application\Application.csproj
 
 dotnet new xunit -o .\tests\IntegrationTests
 dotnet sln add .\tests\IntegrationTests\IntegrationTests.csproj
