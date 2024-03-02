@@ -1,4 +1,6 @@
-﻿namespace Models.Time;
+﻿using Models.Types;
+
+namespace Models.Time;
 
 public static class DateTimeExtensions
 {

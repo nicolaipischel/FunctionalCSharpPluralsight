@@ -1,6 +1,6 @@
-using Models.Time;
+using Models.Types;
 
-namespace UnitTests.Models.Time.YearTests;
+namespace UnitTests.Models.Types.Time.YearTests;
 
 public sealed class Months
 {
