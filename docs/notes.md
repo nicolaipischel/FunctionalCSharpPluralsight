@@ -126,12 +126,18 @@ C# does not have built in support for partial application.}
 
 *<b>The only constant in software is change</b>*
 
+* Easy to add a new function on a discriminated union
+* Hard to add new new type to a discriminated union
+
 In object oriented programming we would use *Polymorphism* to handle type changes.
 * By creating a virtual method on the base class
 * And overriding it in the derrived classes.
   * Subclasses inherit *<b>behavior</b>*
   * State on the base class is *<b>encapsulated</b>*
 * Overrides may depend on object's state
+
+* Adding a class to a hierarchy is cheap
+* Adding a new abstract function to the base class is a breaking change
 
 In functional programming a function in an object
 * All variants must have the same signature
@@ -155,3 +161,10 @@ Switch Expressions (C# 8)
 Separate technical code from domain-specific code
 * Give *ugly* code a name that tells what it does
 Use the most strict type possible on the model
+
+Expanding a discriminated union is a *<b>breaking change</b>*
+* Adding a subtype to a functional design can be much worse than adding a subclass to a object oriented design
+* We need to reduce the possibility for a new subtype to emerge in the future
+* Pay close attention that all the types in the discriminated must be used the same business contexts
+
+*<b>Make illegal states unrepresentable</b>*

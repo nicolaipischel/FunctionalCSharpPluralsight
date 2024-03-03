@@ -37,6 +37,10 @@ Technical Requirement:
   * Bar thicknesses, gaps, antialiasing
   * Image height, margins
 
+* Support assembly aspecifications
+* Parts are built into a device
+* Materials are spent in the process
+
 Example for Type problem:
 * Part: Name="BC547", SKU="ELTRBC547"
   * There is no such thing as dividing a part into two 

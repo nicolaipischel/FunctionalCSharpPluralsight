@@ -1,6 +1,4 @@
-﻿namespace Models.Types;
-
-public record struct Month(Year Year, int Ordinal);
+﻿namespace Models.Types.Common;
 
 public record struct Year(int Number)
 {

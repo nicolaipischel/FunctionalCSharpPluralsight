@@ -1,4 +1,5 @@
 using Models.Types;
+using Models.Types.Media;
 using SkiaSharp;
 
 namespace Models.Media;

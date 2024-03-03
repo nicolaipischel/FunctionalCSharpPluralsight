@@ -1,4 +1,4 @@
-﻿namespace Models.Types;
+﻿namespace Models.Types.Common;
 
 // This is the type (serves as the entry point of the concept)
 public abstract record Measure(string Unit);

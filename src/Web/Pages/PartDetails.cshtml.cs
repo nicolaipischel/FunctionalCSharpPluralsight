@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models.Functions.Media.Types;
 using Models.Media;
 using Models.Types;
+using Models.Types.Media;
 using Web.Configuration;
 
 namespace Web.Pages;

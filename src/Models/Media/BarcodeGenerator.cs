@@ -1,6 +1,7 @@
 using Models.Common;
 using Models.Functions.Media.Types;
 using Models.Types;
+using Models.Types.Media;
 
 namespace Models.Media;
 
