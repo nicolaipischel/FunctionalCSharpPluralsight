@@ -1,8 +1,9 @@
 using Application;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models.Functions.Media.Types;
 using Models.Media;
 using Models.Types;
+using Models.Types.Components;
 using Models.Types.Media;
 using Web.Configuration;
 

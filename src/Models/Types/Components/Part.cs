@@ -1,6 +1,6 @@
 ﻿using Models.Types.Common;
 
-namespace Models.Types;
+namespace Models.Types.Components;
 
 public abstract record InventoryItem(Guid Id, string Name, StockKeepingUnit Sku);
 public record Part(Guid Id, string Name, StockKeepingUnit Sku) 

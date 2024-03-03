@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Options;
-using Models.Functions.Media.Types;
 using Models.Media;
+using Models.Media.Types;
 
 namespace Web.Configuration;
 

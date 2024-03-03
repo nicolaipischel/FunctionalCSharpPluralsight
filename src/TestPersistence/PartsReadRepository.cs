@@ -1,5 +1,6 @@
 ﻿using Application;
 using Models.Types;
+using Models.Types.Components;
 
 namespace TestPersistence;
 

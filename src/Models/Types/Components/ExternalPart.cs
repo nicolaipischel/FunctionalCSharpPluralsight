@@ -1,3 +1,3 @@
-﻿namespace Models.Types;
+﻿namespace Models.Types.Components;
 
 public record ExternalPart(Part Part, ExternalSku Sku);

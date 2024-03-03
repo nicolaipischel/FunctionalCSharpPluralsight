@@ -1,7 +1,8 @@
 using System.Text;
-using Models.Functions.Media.Types;
 using Models.Media;
+using Models.Media.Types;
 using Models.Types;
+using Models.Types.Components;
 
 namespace UnitTests.Models.Media.BarcodeGenerationTests;
 

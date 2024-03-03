@@ -1,5 +1,5 @@
 ﻿using Models.Common;
-using Models.Functions.Media.Types;
+using Models.Media.Types;
 using SkiaSharp;
 
 namespace Models.Media;

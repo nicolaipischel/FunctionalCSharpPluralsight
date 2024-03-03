@@ -1,4 +1,4 @@
-using Models.Functions.Media.Types;
+using Models.Media.Types;
 
 namespace Web.Configuration;
 

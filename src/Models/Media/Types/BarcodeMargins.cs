@@ -1,3 +1,3 @@
-﻿namespace Models.Functions.Media.Types;
+﻿namespace Models.Media.Types;
 
 public record BarcodeMargins(float Horizontal, float Vertical, float BarHeightInPixel);
