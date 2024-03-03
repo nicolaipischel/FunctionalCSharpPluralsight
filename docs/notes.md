@@ -240,4 +240,9 @@ Apparently the compiler does not check that the required properties are already 
 
 TL;DR Use *AddRange()* to add multiple items to immutable list to improve performance.
 
+<b>Freezing</b>
+* Allow mutation during intitialization to improve performance
+* Then *freeze* the object and return it as an immutable instance
+* Freezing is a common tactic in immutable collections
+
 

@@ -16,6 +16,10 @@ public class AssemblyInstruction
     public AssemblyInstruction Append(IEnumerable<InstructionSegment> segments) =>
         new(this.Segments.AddRange(segments));
 
-    public AssemblyInstruction Append(InstructionSegment segment) =>
-        new(this.Segments.Add(segment));
+    public AssemblyInstruction Append(params InstructionSegment[] segments) =>
+        segments.Length == 0
+            ? this
+            : segments.Length == 1
+                ? new(this.Segments.Add(segments[0]))
+                : new(this.Segments.AddRange(segments));
 }
