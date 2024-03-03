@@ -185,3 +185,14 @@ Possible Strategies:
 * Implement a optional object -> unlike null, an optional object is not assignable to a regular reference to an object.
 
 Prefix methods with "Try" to indicate that failing is also possible.
+
+By using Optional Objects we make <b>intention</b> explicit.
+* The primitive functions defined on Option<T> correspond to LINQ
+  * Select
+  * Where
+  * SingleOrDefault
+
+Using optional objects
+* You will never reach out for null in domain-related code
+  * That also stands in object-oriented code
+  
