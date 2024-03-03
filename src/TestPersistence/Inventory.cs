@@ -14,8 +14,8 @@ public class Inventory : IReadOnlyRepository<(Part part, DiscreteMeasure quantit
         _parts = parts;
     }
 
-    public IEnumerable<(Part part, DiscreteMeasure quantity)> TryFind(Guid id) =>
-        _parts.TryFind(id).Where(Exists).Select(part => (part, QuantityFor(part)));
+    public Option<(Part part, DiscreteMeasure quantity)> TryFind(Guid id) =>
+        _parts.TryFind(id).Filter(Exists).Map(part => (part, QuantityFor(part)));
 
     private static DiscreteMeasure QuantityFor(Part part) =>
         new("Piece", Exists(part) ? 1U : 0);

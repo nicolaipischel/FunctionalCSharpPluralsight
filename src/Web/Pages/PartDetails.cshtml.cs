@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models.Media;
 using Models.Types;
+using Models.Types.Common;
 using Models.Types.Components;
 using Models.Types.Media;
 using Web.Configuration;
@@ -24,12 +25,12 @@ public class PartDetailsModel : PageModel
     
     public IActionResult OnGet(Guid id) =>
         _parts.TryFind(id)
-            .Select(part =>
+            .Map(part =>
             {
                 this.Part = part;
                 this.BarcodeImage = this.GenerateBarcode(this.Part.Sku);
                 return (IActionResult)Page();
-            }).SingleOrDefault(NotFound());
+            }).Reduce(NotFound);
 
         // Example to show how partial application would work inline.
         // var skus = Enumerable.Empty<StockKeepingUnit>();

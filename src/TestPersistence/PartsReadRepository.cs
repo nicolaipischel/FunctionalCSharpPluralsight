@@ -1,5 +1,6 @@
 ﻿using Application;
 using Models.Types;
+using Models.Types.Common;
 using Models.Types.Components;
 
 namespace TestPersistence;
@@ -23,7 +24,10 @@ public sealed class PartsReadRepository : IReadOnlyRepository<Part>
         new(Ids[10], "Battery clipper Type A", new StockKeepingUnit("BTCLA"))
     };
 
-    public IEnumerable<Part> TryFind(Guid id) => GetAll().Where(part => part.Id == id);
+    // TODO: Define custom LINQ operator SingleOrNone IEnumerable<T> -> Option<T>
+    public Option<Part> TryFind(Guid id) => 
+        GetAll().Where(part => part.Id == id)
+            .Select(part => part.Optional()).SingleOrDefault(None.Value);
     
     private static Guid[] Ids { get; } =
         Enumerable.Range(0, 1000).Select(_ => Guid.NewGuid()).ToArray();
