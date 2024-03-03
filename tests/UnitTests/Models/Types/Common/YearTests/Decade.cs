@@ -1,7 +1,6 @@
-using Models.Types;
 using Models.Types.Common;
 
-namespace UnitTests.Models.Types.Time.YearTests;
+namespace UnitTests.Models.Types.Common.YearTests;
 
 public sealed class Decade
 {
