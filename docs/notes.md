@@ -195,4 +195,12 @@ By using Optional Objects we make <b>intention</b> explicit.
 Using optional objects
 * You will never reach out for null in domain-related code
   * That also stands in object-oriented code
+
+### Nondestructive Mutation
+We use a copy constructor to create an new copy of an existing instance that we want to mutate.
+* A copy constructor generated on a record is private.
+* Records model values not Entities
+* Do not use record types if (its an Entity)
+  * An object's identity will remain unchanged
+  * An object's attributes will change over time
   
