@@ -31,9 +31,9 @@ Technical Requirement:
 * Draw a barcode from the SKU
 * Support visual style parameters
 * Make no observable side effects
-![img_1.png](img_1.png)
+* Support nondestructive mutation in custom classes
 
-Parameterize barcode printing:
+* Parameterize barcode printing:
   * Bar thicknesses, gaps, antialiasing
   * Image height, margins
 
@@ -43,9 +43,11 @@ Support assembly aspecifications
 
 Only display specifications that can built from items currently available in the inventory
 
+![img_1.png](img_1.png)
 
 Example for Type problem:
 * Part: Name="BC547", SKU="ELTRBC547"
   * There is no such thing as dividing a part into two 
 * Material: Name="Soldering alloy ingot", SKU="SLD10"
   * Dividing a material results in portions that retain the qualities of the original material.
+
