@@ -37,13 +37,20 @@ Technical Requirement:
   * Bar thicknesses, gaps, antialiasing
   * Image height, margins
 
+![img_1.png](img_1.png)
+
 Support assembly aspecifications
 * Parts are built into a device
 * Materials are spent in the process
-
+Specification
+* A list of instructions
+* Each instruction is a block of text consisting of
+    * plaintext
+    * new parts
+    * part mentions (already used in previous instruction)
+* Support different display for multiple vs. single part
 Only display specifications that can built from items currently available in the inventory
-
-![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
 Example for Type problem:
 * Part: Name="BC547", SKU="ELTRBC547"

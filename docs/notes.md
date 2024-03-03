@@ -199,6 +199,9 @@ Using optional objects
 ### Nondestructive Mutation
 We use a copy constructor to create an new copy of an existing instance that we want to mutate.
 * A copy constructor generated on a record is private.
+
+<b>When to not use Records?</b>
+* They come with generated equality members. Classes that contain collections often do not just have one method to compare for equality
 * Records model values not Entities
 * Do not use record types if (its an Entity)
   * An object's identity will remain unchanged
