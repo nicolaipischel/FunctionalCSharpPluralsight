@@ -10,8 +10,8 @@ public class AssemblySpecification
     public AssemblySpecification(AssemblySpecification other) =>
         (Id, Name, Description) = (other.Id, other.Name, other.Description);
     public Guid Id { get; init; }
-    public string Name { get; init; }
-    public string Description { get; init; }
+    public required string Name { get; init; }
+    public required string Description { get; init; }
 
     public IEnumerable<(Part part, DiscreteMeasure quantity)> Components { get; init; } =
         Enumerable.Empty<(Part, DiscreteMeasure)>();

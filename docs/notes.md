@@ -203,4 +203,8 @@ We use a copy constructor to create an new copy of an existing instance that we 
 * Do not use record types if (its an Entity)
   * An object's identity will remain unchanged
   * An object's attributes will change over time
+
+Apparently the compiler does not check that the required properties are already set by the constructor
+* That is why you need to use the [SetsRequiredMembers] attribute on a constructor that does set all required attributes.
+  * This will disable the verification enforced by the required keyword.
   
