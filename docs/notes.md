@@ -168,3 +168,20 @@ Expanding a discriminated union is a *<b>breaking change</b>*
 * Pay close attention that all the types in the discriminated must be used the same business contexts
 
 *<b>Make illegal states unrepresentable</b>*
+
+### Type Instances at Runtime
+* A single instance -> this is the common use case of any type
+* Multiple instances -> Usually in collections or sequences
+* No instance -> indicated as a missing object
+
+### Modeling Missing Objects
+* A function that states that it will always return a value makes a promise it cannot hold. It is lying to you.
+* There is nothing exceptional about not finding an item in the database -> it should not throw an exception
+* A function signature should be *<b>honest</b>*
+
+Possible Strategies:
+* Make it nullable -> you will have to do a lot of nullchecks
+* Return a sequence -> that will either contain or not contain a value
+* Implement a optional object -> unlike null, an optional object is not assignable to a regular reference to an object.
+
+Prefix methods with "Try" to indicate that failing is also possible.

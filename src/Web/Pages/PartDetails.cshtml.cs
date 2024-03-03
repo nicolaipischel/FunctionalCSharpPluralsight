@@ -22,10 +22,14 @@ public class PartDetailsModel : PageModel
     public Part Part { get; set; } = null!;
     public FileContent BarcodeImage { get; set; } = null!;
     
-    public void OnGet(Guid id)
-    {
-        this.Part = _parts.Find(id);
-        this.BarcodeImage = this.GenerateBarcode(this.Part.Sku);
+    public IActionResult OnGet(Guid id) =>
+        _parts.TryFind(id)
+            .Select(part =>
+            {
+                this.Part = part;
+                this.BarcodeImage = this.GenerateBarcode(this.Part.Sku);
+                return (IActionResult)Page();
+            }).SingleOrDefault(NotFound());
 
         // Example to show how partial application would work inline.
         // var skus = Enumerable.Empty<StockKeepingUnit>();
@@ -39,7 +43,6 @@ public class PartDetailsModel : PageModel
         // and we cannot assign strongly typed delegates to Func/Action or the other way around directly.
         // Func<StockKeepingUnit, FileContent> func = x => f(x);
         // BarcodeGenerator g = x => func(x);
-    }
 
     private BarcodeGenerator GenerateBarcode { get; }
 }

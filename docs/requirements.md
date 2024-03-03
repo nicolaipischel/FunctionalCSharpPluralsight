@@ -33,13 +33,16 @@ Technical Requirement:
 * Make no observable side effects
 ![img_1.png](img_1.png)
 
-* Parameterize barcode printing:
+Parameterize barcode printing:
   * Bar thicknesses, gaps, antialiasing
   * Image height, margins
 
-* Support assembly aspecifications
+Support assembly aspecifications
 * Parts are built into a device
 * Materials are spent in the process
+
+Only display specifications that can built from items currently available in the inventory
+
 
 Example for Type problem:
 * Part: Name="BC547", SKU="ELTRBC547"
