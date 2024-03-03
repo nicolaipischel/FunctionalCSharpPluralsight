@@ -245,4 +245,18 @@ TL;DR Use *AddRange()* to add multiple items to immutable list to improve perfor
 * Then *freeze* the object and return it as an immutable instance
 * Freezing is a common tactic in immutable collections
 
+### Managing complex immutable objects
+* Some classes cannot implement equivalence
+* Such classes cannot be implement as records
+
+Custom nondestructive mutation
+* Usually implemented with a copy constructor
+* Backed by C# 11 required properties
+
+### Encapsulating Immutable collections
+* Keep the collection private
+* Expose public mutators that guarantee integrity
+* Expose members that expose collection's content
+* Use LINQ and IEnumerable<T>
+
 

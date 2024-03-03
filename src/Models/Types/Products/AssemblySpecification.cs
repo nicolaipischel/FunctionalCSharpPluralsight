@@ -8,23 +8,27 @@ namespace Models.Types.Products;
 public class AssemblySpecification
 {
     public AssemblySpecification(Guid id) =>
-        (Id, Instructions) = (id, ImmutableList<AssemblyInstruction>.Empty);
+        (Id, InstructionsList) = (id, ImmutableList<AssemblyInstruction>.Empty);
 
     [SetsRequiredMembers]
     public AssemblySpecification(AssemblySpecification other) =>
-        (Id, Name, Description, Instructions) =
-        (other.Id, other.Name, other.Description, other.Instructions);
+        (Id, Name, Description, InstructionsList) =
+        (other.Id, other.Name, other.Description, other.InstructionsList);
     public Guid Id { get; init; }
     public required string Name { get; init; }
     public required string Description { get; init; }
     
-    private ImmutableList<AssemblyInstruction> Instructions { get; init; }
+    private ImmutableList<AssemblyInstruction> InstructionsList { get; init; }
+    public IEnumerable<AssemblyInstruction> Instructions => this.InstructionsList;
 
     public AssemblySpecification Add(params AssemblyInstruction[] instructions) =>
-        new(this) { Instructions = this.Instructions.AddRange((instructions)) };
-
-    public IEnumerable<(Part part, DiscreteMeasure quantity)> Components { get; init; } =
-        Enumerable.Empty<(Part, DiscreteMeasure)>();
+        new(this) { InstructionsList = this.InstructionsList.AddRange((instructions)) };
+    
+    public IEnumerable<(Part part, DiscreteMeasure quantity)> Components =>
+        this.InstructionsList
+            .SelectMany(instruction => instruction.Components)
+            .GroupBy(row => (part: row.part, unit: row.quantity.Unit), row => row.quantity)
+            .Select(group => (group.Key.part, group.Sum()));
 
     public IEnumerable<(InventoryItem item, Measure quantity)> Consumables { get; init; } =
         Enumerable.Empty<(InventoryItem, Measure)>();

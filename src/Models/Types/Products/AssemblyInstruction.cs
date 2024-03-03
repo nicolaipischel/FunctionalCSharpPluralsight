@@ -1,4 +1,6 @@
 using System.Collections.Immutable;
+using Models.Types.Common;
+using Models.Types.Components;
 
 namespace Models.Types.Products;
 
@@ -12,6 +14,9 @@ public class AssemblyInstruction
         : this(segements.ToImmutableList()) { }
     private AssemblyInstruction(ImmutableList<InstructionSegment> segments) =>
         Segments = segments;
+
+    public IEnumerable<(Part part, DiscreteMeasure quantity)> Components =>
+        this.Segments.OfType<NewPartSegment>().Select(seg => (seg.Part, seg.Quantity));
 
     public AssemblyInstruction Append(IEnumerable<InstructionSegment> segments) =>
         new(this.Segments.AddRange(segments));
