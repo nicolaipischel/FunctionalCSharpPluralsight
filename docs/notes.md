@@ -217,5 +217,27 @@ Apparently the compiler does not check that the required properties are already 
 * Immutable collections are less performant than mutable ones
   * Adding an item costs O(log*n*) time, as opposed to O(1)
 
+#### Immutable List Performance
+* Uses balanced tree
+  * each node's left and right subtree of similar heights (recursively)
+* Insertion cost
+  * Proportional to log*n* where *n* is the number of all nodes
+* Rebalancing
+  * Every change to the tree may require rebalancing
+
+* Changing the list in a loop
+  * Takes O(*n*log*n*) time for an immutable list.
+  * Takes O(n) time for a mutable list
+* Iterating the list
+  * Takes O(n) time both in immutable and in common (mutable) list
+  * Immutable list is much slower
+* Creating a non-empty list
+  * Use *ToImmutableList()* extension method
+  * Use *AddRange()* on an empty list
+* Bulk adding to a list
+  * Use *AddRange()* method to add mutltiple items
+  * Followed by a bulk rebalance
+
+TL;DR Use *AddRange()* to add multiple items to immutable list to improve performance.
 
 
