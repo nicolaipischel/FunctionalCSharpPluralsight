@@ -211,3 +211,11 @@ Apparently the compiler does not check that the required properties are already 
 * That is why you need to use the [SetsRequiredMembers] attribute on a constructor that does set all required attributes.
   * This will disable the verification enforced by the required keyword.
   
+### Designing Immutable Objects that contain Collections
+* An immutable object can hold a mutable collection
+  * When done right, that can even help improve performance
+* Immutable collections are less performant than mutable ones
+  * Adding an item costs O(log*n*) time, as opposed to O(1)
+
+
+
